@@ -21,9 +21,9 @@ mongoose.connect(databaseConfig.url, { useNewUrlParser: true, useUnifiedTopology
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
+db.on('error', console.error.bind(console, 'Database connection error:'));
 db.once('open', () => {
-  console.log('Conexión a la base de datos exitosa.');
+  console.log('Database connection successful.');
 });
 
 app.use(express.json());
@@ -34,5 +34,5 @@ app.use('/api', authRoutes);
 app.use('/api', requestBooks);
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
